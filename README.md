@@ -18,6 +18,7 @@ Centraliza cursos, tareas, calendario, notas, chat y herramientas de productivid
 Este proyecto sigue una arquitectura modular basada en **separación por responsabilidades + features**.
 
 > ⚠️ **IMPORTANTE**
+
 > Leer especificaion de la arquitectura [Arhitecture.md](./Architecture.md).
 
 ## Principios clave
