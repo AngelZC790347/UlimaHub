@@ -7,17 +7,18 @@ Centraliza cursos, tareas, calendario, notas, chat y herramientas de productivid
 
 # 🚀 Stack tecnológico
 
-- React
-- TypeScript
-- Vite
-- React Router (Data APIs)
-- Mantine UI
+- [React-Vite-Ts-template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts)
+- [React Router (Data APIs)](https://reactrouter.com/start/data/routing)
+- [Mantine UI](https://mantine.dev/)
 
 ---
 
 # 🧱 Arquitectura del proyecto
 
 Este proyecto sigue una arquitectura modular basada en **separación por responsabilidades + features**.
+
+> ⚠️ **IMPORTANTE**
+> Leer especificaion de la arquitectura [Arhitecture.md](./Architecture.md).
 
 ## Principios clave
 
