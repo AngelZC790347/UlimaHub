@@ -1,0 +1,16 @@
+{
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "always",
+    "source.fixAll.stylelint": "always"
+  },
+  "editor.tabSize": 2,
+  "editor.formatOnType": false,
+  "css.validate": false,
+  "scss.validate": false,
+  "stylelint.enable": true,
+  "stylelint.reportInvalidScopeDisables": true,
+  "stylelint.reportDescriptionlessDisables": true,
+  "stylelint.validate": ["css"]
+}
