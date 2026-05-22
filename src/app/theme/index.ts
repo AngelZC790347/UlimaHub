@@ -1,6 +1,7 @@
 import { createTheme } from '@mantine/core';
-import colors from './color';
+import color from './color';
+
 export default createTheme({
+  colors: color,
   primaryColor: 'brand',
-  colors,
 });

@@ -8,8 +8,10 @@ export type ExtendedULHubColors =
   | 'warning'
   | DefaultMantineColor;
 
+export type ULHubColors = Record<ExtendedULHubColors, MantineColorsTuple>;
+
 declare module '@mantine/core' {
   export interface MantineThemeColorsOverride {
-    colors: Record<ExtendedULHubColors, MantineColorsTuple>;
+    colors: ULHubColors;
   }
 }

@@ -1,17 +1,16 @@
-import type { MantineThemeColors } from '@mantine/core';
-
+import type { ULHubColors } from './mantine';
 export default {
   brand: [
-    '#fff1f2',
-    '#ffe4e6',
-    '#fecdd3',
-    '#fda4af',
-    '#fb7185',
-    '#f43f5e',
-    '#e11d48',
-    '#be123c',
-    '#9f1239',
-    '#881337',
+    '#fff4ed',
+    '#ffe6d5',
+    '#ffd0ad',
+    '#ffb380',
+    '#ff9352',
+    '#f26e22',
+    '#df5f16',
+    '#bb4d10',
+    '#963d0d',
+    '#7a310b',
   ],
 
   success: [
@@ -65,4 +64,4 @@ export default {
     '#0f172a',
     '#020617',
   ],
-} as MantineThemeColors;
+} satisfies ULHubColors;

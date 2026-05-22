@@ -4,6 +4,8 @@
 
     "dbaeumer.vscode-eslint",
 
-    "bradlc.vscode-tailwindcss"
+    "bradlc.vscode-tailwindcss",
+
+    "stylelint.vscode-stylelint"
   ]
 }
