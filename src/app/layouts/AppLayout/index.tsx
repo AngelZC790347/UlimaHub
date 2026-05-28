@@ -9,12 +9,12 @@ const AppLayout = () => {
   const isMobile = useMediaQuery(`(max-width: ${em(750)})`);
   return (
     <AppShell
-      layout={isMobile ? 'default' : 'alt'}
+      layout="default"
       header={{
         height: 30,
       }}
       navbar={{
-        width: 300,
+        width: opened ? 260 : 80,
         breakpoint: 'sm',
         collapsed: { mobile: !opened },
       }}
@@ -31,17 +31,20 @@ const AppLayout = () => {
           px={10}
           h={'100%'}
         >
-          <Burger opened={opened} onClick={toggle} hiddenFrom="sm" />
+          <Burger opened={opened} onClick={toggle} />
           <div style={{ flex: 1, width: 50 }}>
             <h2>Ulima Hub</h2>
           </div>
         </Flex>
       </AppShell.Header>
-      <AppShell.Navbar pt={'md'} withBorder={true}>
+      <AppShell.Navbar 
+        pt={'md'}  
+        withBorder={false}
+        className="sidebar">
         <Logo style={{ margin: '0 auto' }}></Logo>
-        <ul>
-          <Link to="/" label="Dashboard"></Link>
-          <Link to="/teams" label="Teams"></Link>
+        <ul className="menu-list">
+          <Link to="/" label={opened ? 'Dashboard' : ''} className="menu-item"></Link>
+          <Link to="/teams" label={opened ? 'Teams' : ''} className="menu-item"></Link>
         </ul>
       </AppShell.Navbar>
       <AppShell.Main>

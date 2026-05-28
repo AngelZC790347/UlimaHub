@@ -1,3 +1,22 @@
-ul {
+.sidebar {
+  background: #ffffff;
+  border-right: 1px solid #e5e7eb;
+  padding: 16px;
+}
+
+.menu-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 30px;
   padding: 0;
+}
+
+.menu-item {
+  border-radius: 14px;
+  transition: all 0.2s ease;
+}
+
+.menu-item:hover {
+  transform: translateX(4px);
 }
