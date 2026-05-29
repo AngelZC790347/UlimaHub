@@ -1,7 +1,5 @@
 import { Badge, Card, Grid, Group, Stack, Text, Title } from '@mantine/core';
 import dayjs from 'dayjs';
-import { Badge, Card, Grid, Group, Text, Title } from '@mantine/core';
-
 // datos de prueba mientras no hay backend
 const listaCursos = [
   { id: 1, nombre: 'Programación Web', creditos: 4 },
@@ -149,6 +147,7 @@ const DashBoardPage = () => {
             </Stack>
           </Card>
         </Grid.Col>
+      </Grid>
       {/* lista de tareas proximas */}
       <Title order={4} mb="sm">
         Proximas entregas
