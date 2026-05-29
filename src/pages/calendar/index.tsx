@@ -81,16 +81,11 @@ const CalendarPage = () => {
         Calendario
       </Title>
 
-      {/*
-        repeat(auto-fit, minmax(280px, 1fr)):
-        - cada columna tiene minimo 280px y maximo 1fr
-        - si no caben 2 columnas se apilan (responsive sin media queries)
-        - minmax(0, 1fr) en vez de solo 1fr previene que el contenido expanda las columnas
-      */}
+      {/* minmax(0, 1fr) en cada columna: el 0 evita que el contenido expanda el ancho */}
       <div
         style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+          gridTemplateColumns: 'minmax(0, 1fr) minmax(0, 1fr)',
           gap: 16,
           alignItems: 'start',
         }}
