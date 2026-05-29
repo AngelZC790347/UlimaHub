@@ -1,20 +1,41 @@
-import type { ReactElement } from 'react';
-import classes from './Logo.module.css';
 import type React from 'react';
-import { Star } from '../Figuras';
+import type { ReactElement } from 'react';
+
 export default function Logo(props: React.ComponentProps<'div'>): ReactElement {
-  const classWrapper = (props.className ?? '') + ' ' + classes['logo-wrapper'];
-  const wrapperProps = {
-    ...props,
-    className: classWrapper,
-  };
   return (
-    <div {...wrapperProps}>
-      <div className={classes.star}></div>
-      <Star
-        nPointed={6}
-        style={{ translate: '0 -20px', position: 'relative' }}
-      ></Star>
+    <div {...props}>
+      <svg
+        width="56"
+        height="56"
+        viewBox="-100 -100 200 200"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <g fill="#E8650A">
+          <polygon points="0,-72 -22,-30 0,-18 22,-30" transform="rotate(0)" />
+          <polygon points="0,-72 -22,-30 0,-18 22,-30" transform="rotate(45)" />
+          <polygon points="0,-72 -22,-30 0,-18 22,-30" transform="rotate(90)" />
+          <polygon
+            points="0,-72 -22,-30 0,-18 22,-30"
+            transform="rotate(135)"
+          />
+          <polygon
+            points="0,-72 -22,-30 0,-18 22,-30"
+            transform="rotate(180)"
+          />
+          <polygon
+            points="0,-72 -22,-30 0,-18 22,-30"
+            transform="rotate(225)"
+          />
+          <polygon
+            points="0,-72 -22,-30 0,-18 22,-30"
+            transform="rotate(270)"
+          />
+          <polygon
+            points="0,-72 -22,-30 0,-18 22,-30"
+            transform="rotate(315)"
+          />
+        </g>
+      </svg>
     </div>
   );
 }

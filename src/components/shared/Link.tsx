@@ -6,5 +6,5 @@ import { NavLink, type NavLinkProps } from '@mantine/core';
 
 type Props = NavLinkProps & RouterLinkProps;
 export const Link = (props: Props) => {
-  return <NavLink component={RouterLink} {...props}></NavLink>;
+  return <NavLink component={RouterLink} variant='filled' {...props}></NavLink>;
 };
