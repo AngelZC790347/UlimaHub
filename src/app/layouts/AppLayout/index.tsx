@@ -4,7 +4,13 @@ import { useDisclosure } from '@mantine/hooks';
 import { Outlet } from 'react-router';
 import './AppLayout.css';
 import Logo from '@/components/ui/Logo';
-import { House, BookOpen, SquareCheck, UsersRound } from 'lucide-react';
+import {
+  House,
+  BookOpen,
+  SquareCheck,
+  UsersRound,
+  CalendarDays,
+} from 'lucide-react';
 
 const AppLayout = () => {
   const [opened, { toggle }] = useDisclosure();
@@ -44,6 +50,10 @@ const AppLayout = () => {
           <Link to="/tasks" className="menu-item" title="Tasks">
             <SquareCheck size={20} className="menu-icon" />
             <span className="menu-label">Tasks</span>
+          </Link>
+          <Link to="/calendar" className="menu-item" title="Calendario">
+            <CalendarDays size={20} className="menu-icon" />
+            <span className="menu-label">Calendario</span>
           </Link>
           <Link to="/teams" className="menu-item" title="Teams">
             <UsersRound size={20} className="menu-icon" />

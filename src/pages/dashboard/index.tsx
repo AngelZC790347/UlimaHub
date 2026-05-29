@@ -1,4 +1,6 @@
 import { Badge, Card, Grid, Group, Text, Title } from '@mantine/core';
+import { Calendar } from '@mantine/dates';
+import '@mantine/dates/styles.css';
 
 // datos de prueba mientras no hay backend
 const listaCursos = [
@@ -68,28 +70,42 @@ const DashBoardPage = () => {
         </Grid.Col>
       </Grid>
 
-      {/* lista de tareas proximas */}
-      <Title order={4} mb="sm">
-        Proximas entregas
-      </Title>
       <Grid>
-        {tareasProximas.map((tarea) => (
-          <Grid.Col key={tarea.id} span={{ base: 12, sm: 6, md: 4 }}>
-            <Card shadow="xs" padding="md" radius="md" withBorder>
-              <Group justify="space-between" mb={4}>
-                <Text fw={600} size="sm">
-                  {tarea.titulo}
-                </Text>
-                <Badge color={getColorEstado(tarea.estado)} size="sm">
-                  {tarea.estado}
-                </Badge>
-              </Group>
-              <Text c="dimmed" size="xs">
-                {tarea.curso}
-              </Text>
-            </Card>
-          </Grid.Col>
-        ))}
+        {/* lista de tareas proximas */}
+        <Grid.Col span={{ base: 12, md: 8 }}>
+          <Title order={4} mb="sm">
+            Proximas entregas
+          </Title>
+          <Grid>
+            {tareasProximas.map((tarea) => (
+              <Grid.Col key={tarea.id} span={{ base: 12, sm: 6 }}>
+                <Card shadow="xs" padding="md" radius="md" withBorder>
+                  <Group justify="space-between" mb={4}>
+                    <Text fw={600} size="sm">
+                      {tarea.titulo}
+                    </Text>
+                    <Badge color={getColorEstado(tarea.estado)} size="sm">
+                      {tarea.estado}
+                    </Badge>
+                  </Group>
+                  <Text c="dimmed" size="xs">
+                    {tarea.curso}
+                  </Text>
+                </Card>
+              </Grid.Col>
+            ))}
+          </Grid>
+        </Grid.Col>
+
+        {/* mini calendario al costado */}
+        <Grid.Col span={{ base: 12, md: 4 }}>
+          <Title order={4} mb="sm">
+            Este mes
+          </Title>
+          <Card shadow="xs" padding="md" radius="md" withBorder>
+            <Calendar size="sm" />
+          </Card>
+        </Grid.Col>
       </Grid>
     </div>
   );
