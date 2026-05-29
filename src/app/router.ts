@@ -3,6 +3,7 @@ import NotFound from '@/pages/NotFound';
 import DashBoardPage from '@/pages/dashboard';
 import TasksPage from '@/pages/tasks';
 import CoursesPage from '@/pages/courses';
+import CalendarPage from '@/pages/calendar';
 import AppLayout from '@/app/layouts/AppLayout';
 
 export default createBrowserRouter([
@@ -20,6 +21,10 @@ export default createBrowserRouter([
       {
         path: 'courses',
         Component: CoursesPage,
+      },
+      {
+        path: 'calendar',
+        Component: CalendarPage,
       },
     ],
   },
