@@ -1,17 +1,5 @@
-import { useState } from 'react';
-import {
-  Badge,
-  Card,
-  Divider,
-  Grid,
-  Group,
-  Stack,
-  Text,
-  Title,
-} from '@mantine/core';
-import { Calendar } from '@mantine/dates';
+import { Badge, Card, Grid, Group, Stack, Text, Title } from '@mantine/core';
 import dayjs from 'dayjs';
-import '@mantine/dates/styles.css';
 
 // datos de prueba mientras no hay backend
 const listaCursos = [
@@ -31,7 +19,6 @@ const tareasProximas = [
   { id: 3, titulo: 'Examen parcial', curso: 'Calculo 2', estado: 'pendiente' },
 ];
 
-// eventos del calendario con fecha
 const eventosCalendario = [
   { fecha: '2026-06-02', titulo: 'Entrega proyecto PW', tipo: 'tarea' },
   { fecha: '2026-06-05', titulo: 'Examen parcial BD', tipo: 'examen' },
@@ -51,22 +38,13 @@ function colorTipo(tipo: string) {
   return tipo === 'examen' ? 'red' : 'brand';
 }
 
+// los 4 proximos eventos desde hoy
+const proximosCuatro = eventosCalendario
+  .filter((e) => !dayjs(e.fecha).isBefore(dayjs(), 'day'))
+  .sort((a, b) => dayjs(a.fecha).diff(dayjs(b.fecha)))
+  .slice(0, 4);
+
 const DashBoardPage = () => {
-  const [diaSeleccionado, setDiaSeleccionado] = useState<Date | null>(null);
-
-  // eventos del dia que se clickeo
-  const eventosDelDia = diaSeleccionado
-    ? eventosCalendario.filter((e) =>
-        dayjs(e.fecha).isSame(dayjs(diaSeleccionado), 'day')
-      )
-    : [];
-
-  // los 4 proximos eventos desde hoy
-  const proximosCuatro = eventosCalendario
-    .filter((e) => !dayjs(e.fecha).isBefore(dayjs(), 'day'))
-    .sort((a, b) => dayjs(a.fecha).diff(dayjs(b.fecha)))
-    .slice(0, 4);
-
   return (
     <div style={{ padding: '20px' }}>
       <Title order={2} mb="md">
@@ -108,7 +86,7 @@ const DashBoardPage = () => {
       </Grid>
 
       <Grid>
-        {/* lista de tareas proximas */}
+        {/* proximas entregas */}
         <Grid.Col span={{ base: 12, md: 7 }}>
           <Title order={4} mb="sm">
             Proximas entregas
@@ -134,82 +112,34 @@ const DashBoardPage = () => {
           </Grid>
         </Grid.Col>
 
-        {/* columna derecha: calendario + feed */}
+        {/* feed de proximos eventos del calendario */}
         <Grid.Col span={{ base: 12, md: 5 }}>
-          <Card shadow="xs" padding="md" radius="md" withBorder>
-            <Title order={4} mb="sm">
-              Este mes
-            </Title>
-
-            <Calendar
-              size="sm"
-              getDayProps={(date) => {
-                const tieneEvento = eventosCalendario.some((e) =>
-                  dayjs(e.fecha).isSame(dayjs(date), 'day')
-                );
-                const estaSeleccionado = diaSeleccionado
-                  ? dayjs(date).isSame(dayjs(diaSeleccionado), 'day')
-                  : false;
-                return {
-                  selected: estaSeleccionado,
-                  onClick: () =>
-                    setDiaSeleccionado(estaSeleccionado ? null : date),
-                  style: tieneEvento
-                    ? { fontWeight: 700, textDecoration: 'underline' }
-                    : {},
-                };
-              }}
-            />
-
-            {/* muestra eventos del dia si hay algo */}
-            {diaSeleccionado && (
-              <>
-                <Divider my="sm" />
-                <Text size="xs" fw={600} mb={6}>
-                  {dayjs(diaSeleccionado).format('D [de] MMMM')}
-                </Text>
-                {eventosDelDia.length > 0 ? (
-                  <Stack gap={4}>
-                    {eventosDelDia.map((ev, i) => (
-                      <Group key={i} gap="xs">
-                        <Badge
-                          color={colorTipo(ev.tipo)}
-                          size="xs"
-                          variant="light"
-                        >
-                          {ev.tipo}
-                        </Badge>
-                        <Text size="xs">{ev.titulo}</Text>
-                      </Group>
-                    ))}
-                  </Stack>
-                ) : (
-                  <Text size="xs" c="dimmed">
-                    Sin eventos este dia
-                  </Text>
-                )}
-              </>
-            )}
-
-            <Divider my="sm" />
-
-            {/* feed de los 4 proximos eventos */}
-            <Title order={6} mb="xs">
-              Proximos eventos
-            </Title>
-            <Stack gap={6}>
+          <Title order={4} mb="sm">
+            Proximos eventos
+          </Title>
+          <Card shadow="sm" padding="lg" radius="md" withBorder>
+            <Stack gap="sm">
               {proximosCuatro.map((ev, i) => (
-                <Group key={i} justify="space-between">
-                  <Group gap="xs">
-                    <Badge color={colorTipo(ev.tipo)} size="xs" variant="light">
-                      {ev.tipo}
-                    </Badge>
-                    <Text size="xs">{ev.titulo}</Text>
+                <Card key={i} shadow="xs" padding="sm" radius="sm" withBorder>
+                  <Group justify="space-between">
+                    <div>
+                      <Badge
+                        color={colorTipo(ev.tipo)}
+                        size="xs"
+                        variant="light"
+                        mb={4}
+                      >
+                        {ev.tipo}
+                      </Badge>
+                      <Text size="sm" fw={500}>
+                        {ev.titulo}
+                      </Text>
+                    </div>
+                    <Text size="xs" c="dimmed" style={{ whiteSpace: 'nowrap' }}>
+                      {dayjs(ev.fecha).format('D MMM')}
+                    </Text>
                   </Group>
-                  <Text size="xs" c="dimmed">
-                    {dayjs(ev.fecha).format('D MMM')}
-                  </Text>
-                </Group>
+                </Card>
               ))}
             </Stack>
           </Card>
