@@ -38,7 +38,7 @@ const CalendarPage = () => {
       </Title>
 
       <Grid>
-        <Grid.Col span={{ base: 12, md: 6 }}>
+        <Grid.Col span={{ base: 12, md: 6 }} style={{ minWidth: 0 }}>
           <Card shadow="sm" padding="lg" radius="md" withBorder>
             <Calendar
               getDayProps={(date) => {
@@ -59,7 +59,7 @@ const CalendarPage = () => {
           </Card>
         </Grid.Col>
 
-        <Grid.Col span={{ base: 12, md: 6 }}>
+        <Grid.Col span={{ base: 12, md: 6 }} style={{ minWidth: 0 }}>
           <Card shadow="sm" padding="lg" radius="md" withBorder h="100%">
             {diaSeleccionado ? (
               <>
