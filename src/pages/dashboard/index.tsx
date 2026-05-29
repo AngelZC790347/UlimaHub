@@ -63,7 +63,7 @@ const DashBoardPage = () => {
 
   // los 4 proximos eventos desde hoy
   const proximosCuatro = eventosCalendario
-    .filter((e) => dayjs(e.fecha).isSameOrAfter(dayjs(), 'day'))
+    .filter((e) => !dayjs(e.fecha).isBefore(dayjs(), 'day'))
     .sort((a, b) => dayjs(a.fecha).diff(dayjs(b.fecha)))
     .slice(0, 4);
 
