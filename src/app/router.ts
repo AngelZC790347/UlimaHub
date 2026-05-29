@@ -1,6 +1,6 @@
 import { createBrowserRouter } from 'react-router';
 import NotFound from '@/pages/NotFound';
-import DashBoardPage from '@/pages/dashboard/inde';
+import DashBoardPage from '@/pages/dashboard';
 import TasksPage from '@/pages/tasks';
 import CoursesPage from '@/pages/courses';
 import AppLayout from '@/app/layouts/AppLayout';
