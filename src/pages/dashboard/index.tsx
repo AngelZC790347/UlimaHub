@@ -1,5 +1,6 @@
 import { Badge, Card, Grid, Group, Stack, Text, Title } from '@mantine/core';
 import dayjs from 'dayjs';
+import { Badge, Card, Grid, Group, Text, Title } from '@mantine/core';
 
 // datos de prueba mientras no hay backend
 const listaCursos = [
@@ -28,6 +29,7 @@ const eventosCalendario = [
   { fecha: '2026-06-25', titulo: 'Examen final Economia', tipo: 'examen' },
 ];
 
+// devuelve el color segun el estado de la tarea
 function getColorEstado(estado: string) {
   if (estado === 'pendiente') return 'yellow';
   if (estado === 'atrasado') return 'red';
@@ -52,6 +54,7 @@ const DashBoardPage = () => {
       </Title>
 
       {/* stats rapidos */}
+      {/* resumen rapido arriba */}
       <Grid mb="xl">
         <Grid.Col span={{ base: 12, sm: 4 }}>
           <Card shadow="sm" padding="lg" radius="md" withBorder>
@@ -63,6 +66,7 @@ const DashBoardPage = () => {
             </Text>
           </Card>
         </Grid.Col>
+
         <Grid.Col span={{ base: 12, sm: 4 }}>
           <Card shadow="sm" padding="lg" radius="md" withBorder>
             <Text fw={700} size="xl">
@@ -73,6 +77,7 @@ const DashBoardPage = () => {
             </Text>
           </Card>
         </Grid.Col>
+
         <Grid.Col span={{ base: 12, sm: 4 }}>
           <Card shadow="sm" padding="lg" radius="md" withBorder>
             <Text fw={700} size="xl" c="red">
@@ -144,6 +149,28 @@ const DashBoardPage = () => {
             </Stack>
           </Card>
         </Grid.Col>
+      {/* lista de tareas proximas */}
+      <Title order={4} mb="sm">
+        Proximas entregas
+      </Title>
+      <Grid>
+        {tareasProximas.map((tarea) => (
+          <Grid.Col key={tarea.id} span={{ base: 12, sm: 6, md: 4 }}>
+            <Card shadow="xs" padding="md" radius="md" withBorder>
+              <Group justify="space-between" mb={4}>
+                <Text fw={600} size="sm">
+                  {tarea.titulo}
+                </Text>
+                <Badge color={getColorEstado(tarea.estado)} size="sm">
+                  {tarea.estado}
+                </Badge>
+              </Group>
+              <Text c="dimmed" size="xs">
+                {tarea.curso}
+              </Text>
+            </Card>
+          </Grid.Col>
+        ))}
       </Grid>
     </div>
   );

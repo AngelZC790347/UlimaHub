@@ -54,15 +54,8 @@ const CoursesPage = () => {
       <Grid>
         {listaCursos.map((curso) => (
           <Grid.Col key={curso.id} span={{ base: 12, sm: 6, md: 4 }}>
-            <Card
-              shadow="sm"
-              padding="lg"
-              radius="md"
-              withBorder
-              h="100%"
-              style={{ display: 'flex', flexDirection: 'column' }}
-            >
-              <Stack gap="xs" style={{ flex: 1 }}>
+            <Card shadow="sm" padding="lg" radius="md" withBorder h="100%">
+              <Stack gap="xs">
                 <Text fw={700} size="lg">
                   {curso.nombre}
                 </Text>
